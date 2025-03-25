@@ -5,9 +5,11 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.ksp)
+
 }
 
 apply(plugin = "kotlin-kapt")
+apply(plugin = "kotlin-parcelize")
 
 android {
     namespace = "com.etax.movieapp"
@@ -76,8 +78,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
-
     implementation(libs.androidx.material)
 
     // Navigation
@@ -103,11 +103,13 @@ dependencies {
 
     // Hilt
     implementation(libs.hilt.android)
+    implementation(libs.hilt.work)
     ksp(libs.hilt.compiler)
 
     // Room
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
+    implementation(libs.room.paging)
     ksp(libs.room.compiler)
 
     // LeakCanary
@@ -116,6 +118,7 @@ dependencies {
     // Paging
     implementation(libs.paging.runtime)
 
-//    implementation(libs.javapoet)
+    //WorkManager
+    implementation(libs.work.manager)
 
 }
