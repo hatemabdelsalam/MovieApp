@@ -121,4 +121,11 @@ dependencies {
     //WorkManager
     implementation(libs.work.manager)
 
+    // Mockito (for mocking dependencies)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.inline)
+
+    // Coroutines Test (for testing coroutines)
+    testImplementation(libs.coroutines.test)
+
 }

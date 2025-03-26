@@ -1,6 +1,6 @@
 [versions]
 agp = "8.7.3"
-kotlin = "1.9.24"
+kotlin = "1.9.21"
 coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -27,6 +27,9 @@ paging = "3.3.6"
 ksp = "1.9.21-1.0.16"
 work-manager = "2.8.1"
 hilt-work = "1.0.0"
+mockito = "5.10.0"
+mockito-inline = "4.11.0"
+coroutines = "1.8.0"
 
 
 [libraries]
@@ -60,6 +63,9 @@ room-paging = { module = "androidx.room:room-paging", version.ref = "room" }
 leakcanary = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanary" }
 paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "paging" }
 work-manager = { module = "androidx.work:work-runtime-ktx", version.ref = "work-manager" }
+mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockito" }
+mockito-inline = { group = "org.mockito", name = "mockito-inline", version.ref = "mockito-inline" }
+coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
