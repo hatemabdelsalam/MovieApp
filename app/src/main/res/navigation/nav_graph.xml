@@ -7,5 +7,13 @@
     <fragment
         android:id="@+id/nowPlayingMoviesFragment"
         android:name="com.etax.movieapp.nowPlayingMovies.presentation.screen.NowPlayingMoviesFragment"
-        android:label="NowPlayingMoviesFragment" />
+        android:label="NowPlayingMoviesFragment" >
+        <action
+            android:id="@+id/openMovieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailsFragment"
+        android:name="com.etax.movieapp.movieDetails.presentation.screen.MovieDetailsFragment"
+        android:label="MovieDetailsFragment" />
 </navigation>

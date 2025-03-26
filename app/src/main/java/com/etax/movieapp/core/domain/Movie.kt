@@ -12,7 +12,7 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = "movies")
 data class Movie(
     @PrimaryKey(autoGenerate = false)
-    val id: Int,
+    val id: Long,
     val posterPath: String,
     @SerializedName("release_date")
     val releaseDate: String,

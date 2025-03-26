@@ -4,6 +4,9 @@ import android.content.Context
 import com.etax.movieapp.core.presentation.util.BatteryHelper
 import com.etax.movieapp.network.NetworkHelper
 import com.etax.movieapp.core.data.local.MoviesDatabase
+import com.etax.movieapp.movieDetails.data.MovieDetailsRepositoryImpl
+import com.etax.movieapp.movieDetails.domin.MovieDetailsRepository
+import com.etax.movieapp.movieDetails.domin.usecase.GetMovieDetailsUseCase
 import com.etax.movieapp.network.ApiService
 import com.etax.movieapp.nowPlayingMovies.data.NowPlayingMoviesRepositoryImpl
 import com.etax.movieapp.nowPlayingMovies.domain.NowPlayingMoviesRepository
@@ -32,9 +35,26 @@ class AppModule {
     ): NowPlayingMoviesRepository =
         NowPlayingMoviesRepositoryImpl(apiService, moviesDatabase, networkHelper, batteryHelper)
 
+    @Singleton
+    @Provides
+    fun provideMovieDetailsRepository(
+        apiService: ApiService,
+        moviesDatabase: MoviesDatabase,
+        networkHelper: NetworkHelper,
+        batteryHelper: BatteryHelper
+    ): MovieDetailsRepository =
+        MovieDetailsRepositoryImpl(apiService, moviesDatabase, networkHelper, batteryHelper)
+
+
     @Provides
     @Singleton
-    fun provideMoviesUseCases(repository: NowPlayingMoviesRepository): MoviesUseCase {
+    fun provideMoviesUseCases(repository: MovieDetailsRepository): GetMovieDetailsUseCase {
+        return GetMovieDetailsUseCase(repository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideMovieDetailsUseCases(repository: NowPlayingMoviesRepository): MoviesUseCase {
         return MoviesUseCase(
             getMoviesUseCase = GetMoviesUseCase(repository),
             searchMoviesUseCase = SearchMoviesUseCase(repository)

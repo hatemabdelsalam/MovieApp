@@ -20,4 +20,7 @@ interface MovieDao {
 
     @Query(value = "SELECT * FROM movies WHERE title LIKE '%' || :title || '%' ORDER BY strftime('%Y-%m-%d', releaseDate) DESC")
     fun searchMovie(title: String): PagingSource<Int, Movie>
+
+    @Query(value = "SELECT * FROM movies WHERE id = :id")
+    suspend fun getMovieById(id: Long): Movie?
 }
